@@ -61,7 +61,7 @@ body {
 }
 
 .wrapper {
-    width: 90%;
+
     margin: 0 5%;
 }
 
@@ -198,9 +198,7 @@ nav a:hover {
     INTERMEDIATE: IE Fixes
    ======================== */
 
-    nav ul li {
-        display: inline;
-    }
+
 
     .oldie nav a {
         margin: 0 0.7%;
