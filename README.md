@@ -1,4 +1,2 @@
-# wnm617_202090_02
-WNM 617 Advanced Tech: Mobile Web
-
-Students should not touch this file. Don't Touch.
+#Important Links
+http://livywu.com/livy/WNM617/wnm617/wu.livy/index.html
