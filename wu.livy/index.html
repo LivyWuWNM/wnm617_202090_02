@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/app.css">
 
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
+	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
@@ -30,7 +31,7 @@
 					<input id="signin-password" type="password" class="form-input" data-role="none"placeholder="Type your password">
 				</div>
 				<div class="form-control">
-					<a href="#recent-page" class="form-button">Sign In</a>
+					<input type="submit" class="form-button" value="Sign In" data-role="none">
 				</div>
 				<div class="form-control" style="padding:1em; text-align:center; font-size:0.8em">
 					Don't have an account?
@@ -39,6 +40,8 @@
 			</form>
 		</div>
 	</section>
+
+
 
 	<section data-role="page" id="signup-page">
 		<div data-role="main" class="display-flex flex-align-center flex-justify-center">
@@ -66,8 +69,32 @@
 		</div>
 	</section>
 
+
+
 	<section data-role="page" id="recent-page">
 		<div data-role="main">
+			<div class="floater top right">
+				<div class="btn-circle" data-activate="#recent-add-modal">&equiv;</div>
+			</div>
+			<div class="floater bottom right">
+				<div class="btn-circle" data-activate="#recent-profile-modal">&plus;</div>
+			</div>
+
+			<div class="modal" id="recent-add-modal">
+				<div class="modal-back" data-deactivate="#recent-add-modal"></div>
+				<div class="modal-drawer bottom">
+					<div class="modal-head">head</div>
+					<div class="modal-body">body</div>
+				</div>
+			</div>
+
+			<div class="modal" id="recent-profile-modal">
+				<div class="modal-back" data-deactivate="#recent-profile-modal"></div>
+				<div class="modal-drawer left">
+					<div class="modal-head">head</div>
+					<div class="modal-body">body</div>
+				</div>
+			</div>
 		</div>
 		<footer data-role="footer">
 			<ul>
@@ -78,11 +105,18 @@
 		</footer>
 	</section>
 
+
+
 	<section data-role="page" id="list-page">
 		<header data-role="header">
 			<h1>Ghost List</h1>
+			<ul>
+				<li class="flex-stretch"></li>
+				<li><a href="#" data-activate="#list-add-modal">&plus;</a></li>
+			</ul>
 		</header>
 		<div data-role="main">
+			<div class="overscroll">
 			<ul>
 				<li><a href="#ghost-profile-page">Ghost 1</a></li>
 				<li><a href="#ghost-profile-page">Ghost 2</a></li>
@@ -96,6 +130,7 @@
 				<li><a href="#ghost-profile-page">Ghost 10</a></li>
 			</ul>
 		</div>
+		</div>
 		<footer data-role="footer">
 			<ul>
 				<li><a href="#recent-page">Recent</a></li>
@@ -103,7 +138,33 @@
 				<li><a href="#user-profile-page">User Profile</a></li>
 			</ul>
 		</footer>
+
+		<div class="modal" id="list-add-modal">
+			<div class="modal-back" data-deactivate="#list-add-modal"></div>
+			<form id="list-add-form" data-ajax="false" class="modal-popup">
+				<div class="modal-head">Add Ghost</div>
+				<div class="modal-body">
+					<div class="form-control">
+						<label for="list-add-name" class="form-label">Name</label>
+						<input id="list-add-name" type="text" class="form-input" data-role="none" placeholder="Type Ghost Name">
+					</div>
+					<div class="form-control">
+						<label for="list-add-type" class="form-label">Type</label>
+						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="Type Ghost Type">
+					</div>
+					<div class="form-control">
+						<label for="list-add-breed" class="form-label">Breed</label>
+						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type Ghost Breed">
+					</div>
+				</div>
+				<div class="modal-foot">
+					<input type="submit" value="Save" data-role="none">
+				</div>
+			</div>
+		</div>
 	</section>
+
+
 
 	<section data-role="page" id="user-profile-page">
 		<header data-role="header">
@@ -118,6 +179,8 @@
 		</div>
 	</section>
 
+
+
 	<section data-role="page" id="ghost-profile-page">
 		<header data-role="header">
 			<h1>Ghost Profile</h1>
@@ -130,6 +193,8 @@
 		</div>
 	</section>
 
+
+
 	<section data-role="page" id="setting-page">
 		<header data-role="header">
 			<h1>Setting</h1>
@@ -138,7 +203,7 @@
 			</ul>
 		</header>
 		<div data-role="main">
-			<p><a href="#signin-page">Logout</a></p>
+			<p><a href="#signin-page" class="logout">Logout</a></p>
 		</div>
 	</section>
 
