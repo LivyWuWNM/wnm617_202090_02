@@ -19,7 +19,7 @@ const checkSigninForm = () => {
 		return;
 	}
 
-	if(user == 'user' && pass == 'ghost') {
+	if(user == 'user' && pass == 'pass') {
 		console.log('success');
 		sessionStorage.userId = 3;
 		$("#signin-form")[0].reset();
