@@ -363,9 +363,11 @@ a:hover{
 
 /*circle button*/
 .btn-circle {
-    background: white;
+    background: #7f7d71;
+    color:white;
+    border-radius: 50%;
     line-height: 3rem;
-    width: 5rem;
+    width: 3rem;
     display: inline-block;
     text-align: center;
     border-radius: 2rem;
