@@ -74,7 +74,7 @@
 	<section data-role="page" id="recent-page">
 		<div data-role="main">
 			<div class="floater top right">
-				<div class="btn-circle" data-activate="#recent-add-modal">&equiv;</div>
+				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&equiv;</div>
 			</div>
 			<div class="floater bottom right">
 				<div class="btn-circle" data-activate="#recent-profile-modal">&plus;</div>
@@ -96,12 +96,7 @@
 				</div>
 			</div>
 		</div>
-		<footer data-role="footer">
-			<ul>
-				<li><a href="#recent-page">Recent</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">User Profile</a></li>
-			</ul>
+		<footer data-role="footer" data-template="#footer-template">
 		</footer>
 	</section>
 
@@ -117,26 +112,41 @@
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
-			<ul>
-				<li><a href="#ghost-profile-page">Ghost 1</a></li>
-				<li><a href="#ghost-profile-page">Ghost 2</a></li>
-				<li><a href="#ghost-profile-page">Ghost 3</a></li>
-				<li><a href="#ghost-profile-page">Ghost 4</a></li>
-				<li><a href="#ghost-profile-page">Ghost 5</a></li>
-				<li><a href="#ghost-profile-page">Ghost 6</a></li>
-				<li><a href="#ghost-profile-page">Ghost 7</a></li>
-				<li><a href="#ghost-profile-page">Ghost 8</a></li>
-				<li><a href="#ghost-profile-page">Ghost 9</a></li>
-				<li><a href="#ghost-profile-page">Ghost 10</a></li>
-			</ul>
+				<div class="ghostlist">
+					<a href="#ghost-profile-page" class="ghostlist-item">
+						<div class="ghostlist-image">
+							<img scr=".." alt="">
+						</div>
+						<div class="ghostlist-description">
+							<div class="ghostlist-name">name</div>
+							<div class="ghostlist-type"><strong>type</strong> horse</div>
+							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+						</div>
+					</a>
+					<a href="#ghost-profile-page" class="ghostlist-item">
+						<div class="ghostlist-image">
+							<img scr=".." alt="">
+						</div>
+						<div class="ghostlist-description">
+							<div class="ghostlist-name">name</div>
+							<div class="ghostlist-type"><strong>type</strong> horse</div>
+							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+						</div>
+					</a>
+					<a href="#ghost-profile-page" class="ghostlist-item">
+						<div class="ghostlist-image">
+							<img scr=".." alt="">
+						</div>
+						<div class="ghostlist-description">
+							<div class="ghostlist-name">name</div>
+							<div class="ghostlist-type"><strong>type</strong> horse</div>
+							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+						</div>
+					</a>
+				</div>
+			</div>
 		</div>
-		</div>
-		<footer data-role="footer">
-			<ul>
-				<li><a href="#recent-page">Recent</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">User Profile</a></li>
-			</ul>
+		<footer data-role="footer" data-template="#footer-template">
 		</footer>
 
 		<div class="modal" id="list-add-modal">
@@ -167,17 +177,98 @@
 
 
 	<section data-role="page" id="user-profile-page">
+		<div data-role="main">
+			<div class="profile-image">
+				<img src=".." alt="">
+			</div>
+			<div class="profile-body">
+				<div class="profile-name">Name</div>
+				<div class="profile-email"><strong>email</strong>: @gmail</div>
+			</div>
+			<p><a href="#settings-page">Setting</a></p>
+		</div>
+		<footer data-role="footer" data-template="#footer-template">
+		</footer>
+	</section>
+
+
+
+
+	<section data-role="page" id="settings-page">
 		<header data-role="header">
-			<h1>Profile</h1>
+			<h1>Setting</h1>
 			<ul>
 				<li><a href="#" data-rel="back">Back</a></li>
 			</ul>
 		</header>
 		<div data-role="main">
-			User Profile
-			<p><a href="#setting-page">Setting</a></p>
+			<ul class="settings-list">
+				<li class="settings-item"><a href="#profile-settings-page">Profile Settings</a></li>
+				<li class="settings-item"><a href="#password-settings-page">Change Password</a></li>
+				<li class="settings-item"><a href="#" class="js-logout">Logout</a></li>
+			</ul>
 		</div>
 	</section>
+
+
+
+
+	<section data-role="page" id="ghost-settings-page">
+		<header data-role="header">
+			<h1>Profile Setting</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" data-rel="back">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main" style="padding:1em">
+			<form id="profile-form" data-ajax="false">
+				<div class="form-control">
+					<label for="profile-username" class="form-label">Username</label>
+					<input id="profile-username" type="text" class="form-input" data-role="none" placeholder="Type your username" value="ken">
+				</div>
+				<div class="form-control">
+					<label for="profile-name" class="form-label">Full Name</label>
+					<input id="profile-name" type="text" class="form-input" data-role="none" placeholder="Type your name" value="ken Jen">
+				</div>
+				<div class="form-control">
+					<label for="profile-email" class="form-label">Email</label>
+					<input id="profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="ken@gmail.com">
+				</div>
+			</form>
+		</div>
+	</section>
+
+
+
+<section data-role="page" id="password-settings-page">
+		<header data-role="header">
+			<h1>Password Setting</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" data-rel="back">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main" style="padding:1em">
+			<form id="password-form" data-ajax="false">
+				<div class="form-control">
+					<label for="password-oldpassword" class="form-label">Old Password</label>
+					<input id="password-oldpassword" type="text" class="form-input" data-role="none" placeholder="Type your old password">
+				</div>
+				<div class="form-control">
+					<label for="password-newpassword" class="form-label">New Password</label>
+					<input id="password-newpassword" type="text" class="form-input" data-role="none" placeholder="Type your new password">
+				</div>
+				<div class="form-control">
+					<label for="password-confirm" class="form-label">Confirm Password</label>
+					<input id="password-confirm" type="text" class="form-input" data-role="none" placeholder="Type your new password again">
+				</div>
+			</form>
+		</div>
+	</section>
+
 
 
 
@@ -188,24 +279,46 @@
 				<li><a href="#" data-rel="back">Back</a></li>
 			</ul>
 		</header>
-		<div data-role="main">
-			Ghost Profile
+		<div data-role="main" class="display-flex flex-column">
+			<div class="profile-top" style="height:200px;flex:none;background-image:url(img/map.jpg)"></div>
+			<div class="profile-bottom" style="flex:1;position:relative;overflow:hidden">
+				<div class="overscroll">
+					<p>qwewqe</p>
+				</div>
+			</div>
 		</div>
 	</section>
 
 
-
-	<section data-role="page" id="setting-page">
-		<header data-role="header">
-			<h1>Setting</h1>
-			<ul>
-				<li><a href="#" data-rel="back">Back</a></li>
-			</ul>
-		</header>
-		<div data-role="main">
-			<p><a href="#signin-page" class="logout">Logout</a></p>
+	<div class="modal" id="warning-modal">
+		<div class="modal-toast top" data-deactivate="#warning-modal">
+			<div class="message">Message</div>
 		</div>
-	</section>
+	</div>
+
+	<script type="text/template" id="footer-template">
+		<ul>
+			<li>
+				<a href="#recent-page">
+					<div class="nav-icon"><img src="img/icon/map.svg" alt=""></div>
+					<div class="nav-label">Recent</div>
+				</a>
+			</li>
+			<li>
+				<a href="#list-page">
+					<div class="nav-icon"><img src="img/icon/list.svg" alt=""></div>
+					<div class="nav-label">List</div>
+				</a>
+			</li>
+			<li>
+				<a href="#user-profile-page">
+					<div class="nav-icon"><img src="img/icon/profile.svg" alt=""></div>
+					<div class="nav-label">Profile</div>
+				</a>
+			</li>
+		</ul>
+	</script>
+
 
 
 </body>

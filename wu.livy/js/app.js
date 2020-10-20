@@ -30,4 +30,12 @@ $(()=>{
 		let target = $(this).data('toggle');
 		$(target).toggleClass("active");
 	})
+	;
+
+
+	$("[data-template]").each(function(){
+		let target = $(this).data("template");
+		let template = $(target).html();
+		$(this).html(template);
+	})
 })

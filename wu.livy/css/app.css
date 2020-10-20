@@ -119,9 +119,10 @@ a:hover{
     padding:1em;
 }
 
-#signin-page [data-role='main'] {
-    display:flex;
-    flex-direction:column;
+.signin-alt {
+    padding:1em;
+    text-align:center;
+    font-size:0.8em;
 }
 
 #recent-page [data-role='main'] {
@@ -159,7 +160,7 @@ a:hover{
     box-shadow:0 0 5px rgba(0,0,0,0.15);
 
     overflow:hidden;
-    position: relative;
+    position:relative;
 }
 
 .ui-header .ui-title{
@@ -203,6 +204,7 @@ a:hover{
     transition: all 0.3s;
     opacity: 0;
     pointer-events: none;
+    z-index:10;
 }
 
 .modal.active{
@@ -302,6 +304,34 @@ a:hover{
     outline:0;
 }
 
+.modal-toast {
+    position: absolute;
+    width: 50%;
+    background-color: brown;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+    border-radius: 0.2em;
+    padding: 1em;
+    text-align: center;
+    left: 50%;
+    transition: all 0.3s;
+}
+
+.modal-toast.top {
+    top:1em;
+    transform: translate(-50%,-1em);
+}
+
+.modal-toast.bottom {
+    bottom:1em;
+    transform: translate(-50%,1em);
+}
+
+.modal.active .modal-toast {
+    transform: translate(-50%,0);
+    pointer-events: initial;
+}
+
+
 
 /*floater*/
 .floater {
@@ -331,4 +361,87 @@ a:hover{
     border-radius: 2rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     font-size: 1.5em;
+}
+
+
+
+/*profile*/
+.profile-image img {
+    border-radius: 50%;
+    width: calc(100vw - 4em);
+    height: calc(100vw - 4em);
+    object-fit: cover;
+    margin: 2em;
+}
+
+.profile-body {
+    position: 1em;
+}
+
+.profile-name {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+
+
+
+.settings-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.settings-item a{
+    display: block;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid green;
+    position: relative;
+}
+
+.settings-item a:not([href='#'])::after {
+    content: '>';
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+}
+
+
+.ghostlist-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    vertical-align: text-bottom;
+}
+
+.ghostlist-description {
+    padding: 0.5em;
+}
+
+.ghostlist-type,
+.ghostlist-breed {
+    font-size: 0.8em;
+}
+
+.ghostlist-name {
+    font-size: 1.2em;
+}
+
+
+
+.nav-icon img {
+    width: 1em;
+    height: 1em;
+    vertical-align: text-bottom;
+}
+
+.nav-icon {
+    line-height: calc(3em * 0.6);
+    font-size: 1.5em;
+}
+
+.nav-label {
+    line-height: calc(3em *0.4);
+    font-size: 0.7em;
 }

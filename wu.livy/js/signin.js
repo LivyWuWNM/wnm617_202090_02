@@ -1,10 +1,25 @@
 
 
+const makeWarning = (target,message) => {
+	$(target).addClass("active")
+		.find(".message").html(message);
+	setTimeout(()=>{
+		$(target).removeClass("active")
+	},2000);
+}
+
+
 const checkSigninForm = () => {
 	let user = $("#signin-username").val()
 	let pass = $("#signin-password").val()
 
-	if(user == 'tracker' && pass == 'ghost') {
+	console.log(user,pass)
+	if(user=="" || pass=="") {
+		makeWarning("#warning-modal","Type a Username and Password");
+		return;
+	}
+
+	if(user == 'user' && pass == 'ghost') {
 		console.log('success');
 		sessionStorage.userId = 3;
 		$("#signin-form")[0].reset();
