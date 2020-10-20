@@ -36,6 +36,7 @@ h4,
 h5,
 h6 {
     font-family: var(--font-serif);
+    color:white;
 }
 
 a {
@@ -355,7 +356,7 @@ a:hover{
 .btn-circle {
     background: white;
     line-height: 3rem;
-    width: 3rem;
+    width: 5rem;
     display: inline-block;
     text-align: center;
     border-radius: 2rem;
@@ -363,27 +364,39 @@ a:hover{
     font-size: 1.5em;
 }
 
-
+.setting-btn {
+    position:absolute;
+    top: 1px;
+    right: 2px;
+}
 
 /*profile*/
 .profile-image img {
     border-radius: 50%;
     width: calc(100vw - 4em);
     height: calc(100vw - 4em);
+    border:1px solid #570c10;
     object-fit: cover;
     margin: 2em;
 }
 
 .profile-body {
     position: 1em;
+    margin:2em;
 }
 
 .profile-name {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-bottom: 1em;
+    text-align: center;
 }
 
-
+.profile-email {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    border: 1px solid #570c10;
+    padding:1em;
+}
 
 
 .settings-list {
@@ -394,8 +407,8 @@ a:hover{
 
 .settings-item a{
     display: block;
-    padding: 0.5em 1em;
-    border-bottom: 1px solid green;
+    padding: 1em 1em;
+    border-bottom: 1px solid #7f7d71;
     position: relative;
 }
 
@@ -409,14 +422,18 @@ a:hover{
 
 
 .ghostlist-image img {
-    width: 80px;
-    height: 80px;
+    width: 50vw;
+    height: 50vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     object-fit: cover;
     vertical-align: text-bottom;
 }
 
 .ghostlist-description {
     padding: 0.5em;
+    text-align: center;
 }
 
 .ghostlist-type,
@@ -444,4 +461,26 @@ a:hover{
 .nav-label {
     line-height: calc(3em *0.4);
     font-size: 0.7em;
+}
+
+
+.logout-button {
+    display: inline-block;
+    width: 50%;
+    border-width: 0;
+    background-color: #570c10;
+    font: inherit;
+    color: white;
+    position: absolute;
+    bottom: 5%;
+    left:50%;
+    padding:1em 1em;
+    margin: 0;
+    outline: 0;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.color{
+    color:white;
 }

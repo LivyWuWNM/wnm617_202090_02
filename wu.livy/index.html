@@ -72,12 +72,15 @@
 
 
 	<section data-role="page" id="recent-page">
+		<header data-role="header">
+			<h1>TrackIT</h1>
+		</header>
 		<div data-role="main">
-			<div class="floater top right">
+			<!--<div class="floater top right">
 				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&equiv;</div>
 			</div>
 			<div class="floater bottom right">
-				<div class="btn-circle" data-activate="#recent-profile-modal">&plus;</div>
+				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&plus;</div>
 			</div>
 
 			<div class="modal" id="recent-add-modal">
@@ -94,9 +97,9 @@
 					<div class="modal-head">head</div>
 					<div class="modal-body">body</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
-		<footer data-role="footer" data-template="#footer-template">
+		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 	</section>
 
@@ -107,7 +110,7 @@
 			<h1>Ghost List</h1>
 			<ul>
 				<li class="flex-stretch"></li>
-				<li><a href="#" data-activate="#list-add-modal">&plus;</a></li>
+				<li><a href="#" data-activate="#list-add-modal" class="color">&plus;</a></li>
 			</ul>
 		</header>
 		<div data-role="main">
@@ -115,38 +118,58 @@
 				<div class="ghostlist">
 					<a href="#ghost-profile-page" class="ghostlist-item">
 						<div class="ghostlist-image">
-							<img scr=".." alt="">
+							<img src="image/ghost-01.png" alt="">
 						</div>
 						<div class="ghostlist-description">
-							<div class="ghostlist-name">name</div>
-							<div class="ghostlist-type"><strong>type</strong> horse</div>
-							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+							<div class="ghostlist-name">Smile Ghost</div>
+							<div class="ghostlist-type"><strong>Type: </strong> Floatting</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
 						<div class="ghostlist-image">
-							<img scr=".." alt="">
+							<img src="image/ghost-02.png" alt="">
 						</div>
 						<div class="ghostlist-description">
-							<div class="ghostlist-name">name</div>
-							<div class="ghostlist-type"><strong>type</strong> horse</div>
-							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+							<div class="ghostlist-name">Sad Ghost</div>
+							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
 						<div class="ghostlist-image">
-							<img scr=".." alt="">
+							<img src="image/ghost-03.png" alt="">
 						</div>
 						<div class="ghostlist-description">
-							<div class="ghostlist-name">name</div>
-							<div class="ghostlist-type"><strong>type</strong> horse</div>
-							<div class="ghostlist-breed"><strong>breed</strong> andalusian</div>
+							<div class="ghostlist-name">Quite Ghost</div>
+							<div class="ghostlist-type"><strong>Type: </strong> Floatting</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
+						</div>
+					</a>
+					<a href="#ghost-profile-page" class="ghostlist-item">
+						<div class="ghostlist-image">
+							<img src="image/ghost-04.png" alt="">
+						</div>
+						<div class="ghostlist-description">
+							<div class="ghostlist-name">Snow Woman</div>
+							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> Black Hair</div>
+						</div>
+					</a>
+					<a href="#ghost-profile-page" class="ghostlist-item">
+						<div class="ghostlist-image">
+							<img src="image/ghost-05.png" alt="">
+						</div>
+						<div class="ghostlist-description">
+							<div class="ghostlist-name">Needle Ghost</div>
+							<div class="ghostlist-type"><strong>Type: </strong> Floatting</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 				</div>
 			</div>
 		</div>
-		<footer data-role="footer" data-template="#footer-template">
+		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 
 		<div class="modal" id="list-add-modal">
@@ -160,11 +183,11 @@
 					</div>
 					<div class="form-control">
 						<label for="list-add-type" class="form-label">Type</label>
-						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="Type Ghost Type">
+						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="How it moves?">
 					</div>
 					<div class="form-control">
-						<label for="list-add-breed" class="form-label">Breed</label>
-						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type Ghost Breed">
+						<label for="list-add-breed" class="form-label">Color</label>
+						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type Ghost Color">
 					</div>
 				</div>
 				<div class="modal-foot">
@@ -177,17 +200,24 @@
 
 
 	<section data-role="page" id="user-profile-page">
+		<header data-role="header">
+			<h1>Profile</h1>
+			<ul>
+				<li><a href="#settings-page" class="setting-btn color">Setting</a></li>
+			</ul>
+		</header>
 		<div data-role="main">
 			<div class="profile-image">
-				<img src=".." alt="">
+				<img src="image/profile-image.png" alt="">
 			</div>
 			<div class="profile-body">
-				<div class="profile-name">Name</div>
-				<div class="profile-email"><strong>email</strong>: @gmail</div>
+				<div class="profile-name">Livy Wu</div>
+				<div class="profile-email"><strong>Username:</strong> Ghost Tracker</div>
+				<div class="profile-email"><strong>Email:</strong> ghost-tracker@ghost.com</div>
 			</div>
-			<p><a href="#settings-page">Setting</a></p>
+
 		</div>
-		<footer data-role="footer" data-template="#footer-template">
+		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 	</section>
 
@@ -198,14 +228,14 @@
 		<header data-role="header">
 			<h1>Setting</h1>
 			<ul>
-				<li><a href="#" data-rel="back">Back</a></li>
+				<li><a href="#" data-rel="back" class="color">Back</a></li>
 			</ul>
 		</header>
 		<div data-role="main">
 			<ul class="settings-list">
 				<li class="settings-item"><a href="#profile-settings-page">Profile Settings</a></li>
 				<li class="settings-item"><a href="#password-settings-page">Change Password</a></li>
-				<li class="settings-item"><a href="#" class="js-logout">Logout</a></li>
+				<li class="logout-button"><a href="#" class="js-logout">Logout</a></li>
 			</ul>
 		</div>
 	</section>
@@ -213,10 +243,10 @@
 
 
 
-	<section data-role="page" id="ghost-settings-page">
+	<section data-role="page" id="profile-settings-page">
 		<header data-role="header">
 			<h1>Profile Setting</h1>
-			<ul>
+			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
 				<li><a href="#" data-rel="back">Save</a></li>
@@ -226,15 +256,15 @@
 			<form id="profile-form" data-ajax="false">
 				<div class="form-control">
 					<label for="profile-username" class="form-label">Username</label>
-					<input id="profile-username" type="text" class="form-input" data-role="none" placeholder="Type your username" value="ken">
+					<input id="profile-username" type="text" class="form-input" data-role="none" placeholder="Type your username" value="Ghost Tracker">
 				</div>
 				<div class="form-control">
-					<label for="profile-name" class="form-label">Full Name</label>
-					<input id="profile-name" type="text" class="form-input" data-role="none" placeholder="Type your name" value="ken Jen">
+					<label for="profile-name" class="form-label">Name</label>
+					<input id="profile-name" type="text" class="form-input" data-role="none" placeholder="Type your name" value="Livy Wu">
 				</div>
 				<div class="form-control">
 					<label for="profile-email" class="form-label">Email</label>
-					<input id="profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="ken@gmail.com">
+					<input id="profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="ghost-tracker@ghost.com">
 				</div>
 			</form>
 		</div>
@@ -245,7 +275,7 @@
 <section data-role="page" id="password-settings-page">
 		<header data-role="header">
 			<h1>Password Setting</h1>
-			<ul>
+			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
 				<li><a href="#" data-rel="back">Save</a></li>
@@ -275,12 +305,15 @@
 	<section data-role="page" id="ghost-profile-page">
 		<header data-role="header">
 			<h1>Ghost Profile</h1>
-			<ul>
+			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 			</ul>
 		</header>
 		<div data-role="main" class="display-flex flex-column">
-			<div class="profile-top" style="height:200px;flex:none;background-image:url(img/map.jpg)"></div>
+			<div class="profile-image">
+				<img src="image/ghost-03.png" alt="">
+			</div>
+			<div class="profile-name"><strong>Ghost</strong></div>
 			<div class="profile-bottom" style="flex:1;position:relative;overflow:hidden">
 				<div class="overscroll">
 					<p>qwewqe</p>
@@ -300,19 +333,19 @@
 		<ul>
 			<li>
 				<a href="#recent-page">
-					<div class="nav-icon"><img src="img/icon/map.svg" alt=""></div>
+					<div class="nav-icon"><img src="image/recent.png" alt=""></div>
 					<div class="nav-label">Recent</div>
 				</a>
 			</li>
 			<li>
 				<a href="#list-page">
-					<div class="nav-icon"><img src="img/icon/list.svg" alt=""></div>
+					<div class="nav-icon"><img src="image/list.png" alt=""></div>
 					<div class="nav-label">List</div>
 				</a>
 			</li>
 			<li>
 				<a href="#user-profile-page">
-					<div class="nav-icon"><img src="img/icon/profile.svg" alt=""></div>
+					<div class="nav-icon"><img src="  image/profile.png" alt=""></div>
 					<div class="nav-label">Profile</div>
 				</a>
 			</li>
