@@ -85,29 +85,33 @@
 
 			<div class="modal" id="recent-add-modal">
 				<div class="modal-back" data-deactivate="#recent-add-modal"></div>
-				<div class="modal-drawer bottom">
+				<form id="location-add-form" data-ajax="false" class="modal-popup">
 					<div class="modal-head">Add Location</div>
 
 					<div class="modal-body">
 					<div class="form-control">
-						<label for="list-add-type" class="form-label">Name</label>
-						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="Type in name">
+						<label for="location-add-name" class="form-label">Name</label>
+						<input id="location-add-name" type="text" class="form-input" data-role="none" placeholder="Type in name">
 					</div>
 					<div class="form-control">
-						<label for="list-add-breed" class="form-label">Location</label>
-						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type in address">
+						<label for="location-add" class="form-label">Location</label>
+						<input id="location-add" type="text" class="form-input" data-role="none" placeholder="Type in address">
+					</div>
+					<div class="modal-foot">
+						<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">
 					</div>
 				</div>
+			</form>
 				</div>
 			</div>
 
-			<div class="modal" id="recent-profile-modal">
+			<!--<div class="modal" id="recent-profile-modal">
 				<div class="modal-back" data-deactivate="#recent-profile-modal"></div>
 				<div class="modal-drawer left">
 					<div class="modal-head">head</div>
 					<div class="modal-body">body</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
@@ -204,7 +208,6 @@
 					<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">
 				</div>
 			</div>
-		</div>
 	</section>
 
 
