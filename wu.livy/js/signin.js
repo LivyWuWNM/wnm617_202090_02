@@ -19,18 +19,24 @@ const checkSigninForm = () => {
 		return;
 	}
 
-	if(user == 'user' && pass == 'pass') {
+	let found_user = await query({
+		type:'check_signin',
+		params:[user,pass]
+	});
+
+	if(found_user.result.length) {
 		console.log('success');
-		sessionStorage.userId = 3;
+		sessionStorage.userId = found_user.result[0].id;
 		$("#signin-form")[0].reset();
 	}
 	else {
 		console.log('failure');
 		sessionStorage.removeItem('userId');
 
-		//if user log in fail, do something 
+		makeWarning("#warning-modal","Sign In Failed");
 	}
 
+	
 	checkUserId();
 }
 
