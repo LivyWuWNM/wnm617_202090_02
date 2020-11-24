@@ -1,6 +1,6 @@
 
 
-const makeGhostList = templater(0=>`
+const makeGhostList = templater(o=>`
 	<div class="ghostlist-item js-ghost-jump" data-id="${o.id}">
 		<div class="ghostlist-image">
 			<img src="${o.img}" alt="">

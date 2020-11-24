@@ -9,7 +9,7 @@ $(()=>{
 	
 
 	.on("pagecontainerbeforeshow",function(e,ui){
-		console.log(ui.toPagep[0].id)
+		console.log(ui.toPage[0].id)
 
 
 		switch(ui.toPage[0].id) {
