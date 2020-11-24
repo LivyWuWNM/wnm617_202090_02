@@ -1,5 +1,7 @@
 $(()=>{
 
+	console.dir($("#user-edit-form")[0])
+
 	checkUserId();
 
 	$(document)
@@ -14,7 +16,9 @@ $(()=>{
 			case 'recent-page': RecentPage(); break;
 			case 'list-page': ListPage(); break;
 			case 'user-profile-page': UserProfilePage(); break;
-			case 'animal-profile-page': AnimalProfilePage(); break;
+			case 'user-profile-edit-page': UserProfileEditPage(); break;
+			case 'ghost-profile-page': GhostProfilePage(); break;
+			case 'ghost-profile-edit-page': GhostProfileEditPage(); break;
 		}
 	})
 
@@ -28,10 +32,18 @@ $(()=>{
 		checkUserId();
 	})
 
-	.on("click",".js-animal-jump",function(e){
-		sessionStorage.animalId = $(this).data("id");
-		$.mobile.navigate("#animal-profile-page");
+	.on("click",".js-ghost-jump",function(e){
+		sessionStorage.ghostId = $(this).data("id");
+		$.mobile.navigate("#ghost-profile-page");
 	})
+
+	.on("click",".js-location-jump",function(e){
+		sessionStorage.ghostId = $(this).data("id");
+		$.mobile.navigate("#location-profile-page");
+	})
+
+
+
 
 
 

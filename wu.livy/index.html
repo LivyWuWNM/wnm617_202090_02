@@ -18,6 +18,8 @@
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxFlGCvrBiz53-c8WDpV4bryeCiEkdNdc" defer></script>
+
 </head>
 
 
@@ -78,7 +80,7 @@
 
 
 	<section data-role="page" id="recent-page">
-		<header data-role="header">
+		<header data-role="main">
 			<h1>TrackIT</h1>
 		</header>
 		<div data-role="main">
@@ -143,7 +145,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Smile Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
+							<div class="ghostlist-color"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -153,7 +155,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Sad Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
-							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
+							<div class="ghostlist-color"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -163,7 +165,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Quiet Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
+							<div class="ghostlist-color"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -173,7 +175,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Snow Woman</div>
 							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
-							<div class="ghostlist-breed"><strong>Color: </strong> Gray Hair</div>
+							<div class="ghostlist-color"><strong>Color: </strong> Gray Hair</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -183,7 +185,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Needle Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
+							<div class="ghostlist-color"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 				</div>
@@ -206,8 +208,8 @@
 						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="How it moves?">
 					</div>
 					<div class="form-control">
-						<label for="list-add-breed" class="form-label">Color</label>
-						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type Ghost Color">
+						<label for="list-add-color" class="form-label">Color</label>
+						<input id="list-add-color" type="text" class="form-input" data-role="none" placeholder="Type Ghost Color">
 					</div>
 				</div>
 				<div class="modal-foot">
@@ -252,7 +254,7 @@
 		</header>
 		<div data-role="main">
 			<ul class="settings-list">
-				<li class="settings-item"><a href="#profile-settings-page">Profile Settings</a></li>
+				<li class="settings-item"><a href="#user-profile-edit-page">Profile Settings</a></li>
 				<li class="settings-item"><a href="#password-settings-page">Change Password</a></li>
 				<li class="logout-button"><a href="#" class="js-logout">Logout</a></li>
 			</ul>
@@ -262,7 +264,7 @@
 
 
 
-	<section data-role="page" id="profile-settings-page">
+	<section data-role="page" id="user-profile-edit-page">
 		<header data-role="header">
 			<h1>Profile Setting</h1>
 			<ul class="color">
@@ -326,6 +328,10 @@
 			<h1>Ghost Profile</h1>
 			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#ghost-profile-edit-page">
+					<img src="image/pencil.svg" alt="" class="icon">
+				</a></li>
 			</ul>
 		</header>
 		<div data-role="main" class="display-flex flex-column">
@@ -339,6 +345,20 @@
 					<p class="ghost-description">The belief in the existence of an afterlife, as well as manifestations of the spirits of the dead, is widespread, dating back to animism or ancestor worship in pre-literate cultures. Certain religious practices—funeral rites, exorcisms, and some practices of spiritualism and ritual magic—are specifically designed to rest the spirits of the dead. Ghosts are generally described as solitary, human-like essences, though stories of ghostly armies and the ghosts of animals rather than humans have also been recounted.[2][3] They are believed to haunt particular locations, objects, or people they were associated with in life. According to a 2009 study by the Pew Research Center, 18% of Americans say they have seen a ghost.</p>
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<section data-role="page" id="ghost-profile-edit-page">
+		<header data-role="header">
+			<h1>Ghost Info</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" data-rel="back">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main" class="dispaly-flex flex-column">
+			<form id="ghost-edit-form" data-ajax="false" style="padding:1em"></form>
 		</div>
 	</section>
 
