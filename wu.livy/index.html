@@ -133,13 +133,14 @@
 			<h1>Ghost List</h1>
 			<ul>
 				<li class="flex-stretch"></li>
-				<li><a href="#" data-activate="#list-add-modal" class="color">&plus;</a></li>
+				<!--<li><a href="#" data-activate="#list-add-modal" class="color">&plus;</a></li>-->
+				<li><a href="#ghost-add-page">&plus;</a></li>
 			</ul>
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
 				<div class="ghostlist">
-					<a href="#ghost-profile-page" class="ghostlist-item">
+					<!--<a href="#ghost-profile-page" class="ghostlist-item">
 						<div class="ghostlist-image">
 							<img src="image/ghost-01.png" alt="">
 						</div>
@@ -188,7 +189,7 @@
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
 							<div class="ghostlist-color"><strong>Color: </strong> White</div>
 						</div>
-					</a>
+					</a>-->
 				</div>
 			</div>
 		</div>
@@ -237,7 +238,7 @@
 				<div class="profile-email"><strong>Username:</strong> Ghost Tracker</div>
 				<div class="profile-email"><strong>Email:</strong> ghost-tracker@ghost.com</div>
 			</div>
-
+			<!--<div class="profile"></div>-->
 		</div>
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
@@ -255,7 +256,7 @@
 		</header>
 		<div data-role="main">
 			<ul class="settings-list">
-				<li class="settings-item"><a href="#user-profile-edit-page">Profile Settings</a></li>
+				<li class="settings-item"><a href="#user-edit-page">Profile Settings</a></li>
 				<li class="settings-item"><a href="#password-settings-page">Change Password</a></li>
 				<li class="logout-button"><a href="#" class="js-logout">Logout</a></li>
 			</ul>
@@ -265,16 +266,17 @@
 
 
 
-	<section data-role="page" id="user-profile-edit-page">
+	<section data-role="page" id="user-edit-page">
 		<header data-role="header">
 			<h1>Profile Setting</h1>
 			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#" data-rel="back">Save</a></li>
+				<li><a href="#" class="js-user-edit">Save</a></li>
 			</ul>
 		</header>
 		<div data-role="main" style="padding:1em">
+			<!--<form id="user-edit-form" data-ajax="false" style="padding:1em"></form>-->
 			<form id="profile-form" data-ajax="false">
 				<div class="form-control">
 					<label for="profile-username" class="form-label">Username</label>
@@ -330,13 +332,22 @@
 			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#ghost-profile-edit-page">
+				<li><a href="#ghost-edit-page">
 					<img src="image/pencil.png" alt="" class="icon">
 				</a></li>
 			</ul>
 		</header>
 		<div data-role="main" class="display-flex flex-column">
-			<div class="profile-image">
+			<div class="ghost-top">
+				<div class="map"></div>
+				<div class="floater bottom right">
+					<a href="#location-add-page" class="btn-circle">&plus;</a>
+				</div>
+			</div>
+			<div class="ghost-bottom">
+				<div class="profile"></div>
+			</div>
+			<!--<div class="profile-image">
 				<img src="image/ghost-03.png" alt="">
 			</div>
 			<div class="profile-name"><strong>Ghost</strong></div>
@@ -345,23 +356,98 @@
 					<p class="ghost-description">Ghost is the soul or spirit of a dead person or animal that can appear to the living.</p>
 					<p class="ghost-description">The belief in the existence of an afterlife, as well as manifestations of the spirits of the dead, is widespread, dating back to animism or ancestor worship in pre-literate cultures. Certain religious practices—funeral rites, exorcisms, and some practices of spiritualism and ritual magic—are specifically designed to rest the spirits of the dead. Ghosts are generally described as solitary, human-like essences, though stories of ghostly armies and the ghosts of animals rather than humans have also been recounted.[2][3] They are believed to haunt particular locations, objects, or people they were associated with in life. According to a 2009 study by the Pew Research Center, 18% of Americans say they have seen a ghost.</p>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</section>
 
-	<section data-role="page" id="ghost-profile-edit-page">
+	<section data-role="page" id="ghost-add-page">
 		<header data-role="header">
 			<h1>Ghost Info</h1>
 			<ul>
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#" data-rel="back">Save</a></li>
+				<li><a href="#" class="js-ghost-add">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main" class="dispaly-flex flex-column">
+			<!--<form id="ghost-edit-form" data-ajax="false" style="padding:1em"></form>-->
+			<form id="ghost-add-form" data-ajax="false" style="padding:1em">
+				<input type="hidden" id="ghost-add-destination" value="#list-page">
+				<div class="form-control">
+					<label for="ghost-add-name" class="form-label">Name</label>
+					<input id="ghost-add-name" type="text" class="form-input" data-role="none" placeholder="Type ghost name">
+				</div>
+				<div class="form-control">
+					<label for="ghost-add-type" class="form-label">Type</label>
+					<input id="ghost-add-type" type="text" class="form-input" data-role="none" placeholder="Type ghost type">
+				</div>
+				<div class="form-control">
+					<label for="ghost-add-color" class="form-label">Color</label>
+					<input id="ghost-add-color" type="text" class="form-input" data-role="none" placeholder="Type ghost color">
+				</div>
+				<div class="form-control">
+					<label for="ghost-add-description" class="form-label">Description</label>
+					<input id="ghost-add-description" type="text" class="form-input" data-role="none" placeholder="Type ghost description">
+				</div>
+		</div>
+	</section>
+
+
+	<section data-role="page" id="ghost-edit-page">
+		<header data-role="header">
+			<h1>Ghost Info</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" class="js-ghost-edit">Save</a></li>
 			</ul>
 		</header>
 		<div data-role="main" class="dispaly-flex flex-column">
 			<form id="ghost-edit-form" data-ajax="false" style="padding:1em"></form>
 		</div>
 	</section>
+
+
+
+
+	<section data-role="page" id="location-add-page">
+		<header data-role="header">
+			<h1>Choose Location</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#location-description-page">Next</a></li>
+			</ul>
+		</header>
+		<div data-role="main">
+			<input type="hidden" id="location-add-lat">
+			<input type="hidden" id="location-add-lng">
+			<div class="map"></div>
+		</div>
+	</section>
+
+	<section data-role="page" id="location-description-page">
+		<header data-role="header">
+			<h1>Describe Location</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" class="js-location-add">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main">
+			<div class="overscroll">
+				<form id="location-add-form" data-ajax="false" style="padding:1em">
+					<div class="form-control">
+						<label for="location-add-description" class="form-input">Description</label>
+						<textarea id="location-add-description" class="form-input" data-role="none" placeholder="Type location description"></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+
 
 
 	<div class="modal" id="warning-modal">
