@@ -15,10 +15,14 @@ $(()=>{
 		switch(ui.toPage[0].id) {
 			case 'recent-page': RecentPage(); break;
 			case 'list-page': ListPage(); break;
+
 			case 'user-profile-page': UserProfilePage(); break;
-			case 'user-profile-edit-page': UserProfileEditPage(); break;
+			case 'user-edit-page': UserEditPage(); break;
+
 			case 'ghost-profile-page': GhostProfilePage(); break;
-			case 'ghost-profile-edit-page': GhostProfileEditPage(); break;
+			case 'ghost-edit-page': GhostEditPage(); break;
+
+			case 'location-add-page': LocationAddPage(); break;
 		}
 	})
 
@@ -26,6 +30,29 @@ $(()=>{
 		e.preventDefault();
 		checkSigninForm();
 	})
+	.on("submit","#signup-form",function(e){
+		e.preventDefault();
+		checkSignupForm();
+	})
+
+
+
+	.on("click",".js-ghost-add",function(e){
+		checkGhostAddForm();
+	})
+	.on("click",".js-ghost-edit",function(e){
+		checkGhostEditForm();
+	})
+	.on("click",".js-user-edit",function(e){
+		checkUserEditForm();
+	})
+	.on("click",".js-location-add",function(e){
+		checkLocationAddForm();
+	})
+
+
+
+
 
 	.on("click",".js-logout", function(e){
 		sessionStorage.removeItem('userId');
@@ -40,6 +67,9 @@ $(()=>{
 	.on("click",".js-location-jump",function(e){
 		sessionStorage.ghostId = $(this).data("id");
 		$.mobile.navigate("#location-profile-page");
+	})
+	.on("click",".js-ghost-delete",function(e){
+		checkGhostDelete($(this).data("id"));
 	})
 
 

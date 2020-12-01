@@ -34,6 +34,9 @@ const makeGhostProfile = templater(o=>`
 		<div class="profile-type"><strong>Type</strong>: ${o.type}</div>
 		<div class="profile-color"><strong>Color</strong>: ${o.color}</div>
 	</div>
+	<div>
+		<a href="#" class="js-ghost-delete" data-id="${o.id}">Delete</a>
+	</div>
 `);
 
 
@@ -91,11 +94,14 @@ const makeGhostProfileUpdateForm = o => `
 		placeholder:"Type Ghost Color",
 		value:o.color
 	})}
+	<div class="form-control">
+		<label for="ghost-edit-description" class="form-label">Description</label>
+		<textarea id="ghost-edit-description" class="form-input" data-role="none" placeholder="Type ghost description">${o.description}</textarea>
+	</div>
 `;
 
 
-const makeUserProfileUpdateForm = o => `
-	<form id="user-edit-form" data-ajax="false" style="padding:1em">
+const makeUserEditForm = o => `
 	${FormControl({
 		namespace:"user-edit",
 		name:"username",
