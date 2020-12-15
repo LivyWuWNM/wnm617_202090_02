@@ -30,7 +30,7 @@ const checkSigninForm = async() => {
 
 	if(found_user.result!="") {
 		console.log('success');
-		sessionStorage.userId = found_user.result[0].id;
+		sessionStorage.userId = found_user.result;
 		$("#signin-form")[0].reset();
 	}
 	else {
