@@ -1,0 +1,140 @@
+html {
+    background: linear-gradient(90deg, #2f3640 23%, #181b20 100%);
+    color:white;
+}
+
+
+
+.title{
+	position:relative;
+	float:right;
+	top:20px;
+	transform: translateY(-60%);
+	color:white;
+	font-size:7em;
+	text-align:right;
+
+}
+
+.main aside {
+    background:linear-gradient(90deg, #d0d0d0 48%, #919191 100%);
+    position: absolute;
+    top:-100px;
+    left:-450px;
+    width:500px;
+    height:630px;
+    content: '';
+    border-radius: 100%;
+    box-shadow: 0px 0px 30px -4px rgba(0, 0, 0, 0.5);
+    border-bottom: 20px solid #7a7a7a;
+    text-align: left;
+    padding:100px;
+    padding-left: 500px;
+    padding-top:355px;
+    font-size:1.5em;
+    border-top: 0px solid #7a7a7a;
+    min-width:400px;
+
+}
+
+
+.footer-container{
+	background:#181b20;
+    border-top: 2px solid #7a7a7a;
+    text-align: right;
+    padding: 10px;
+    font-size:2em;
+    color:#363e49;
+}
+
+.header-container{
+	border-bottom: 2px solid #7a7a7a;
+	background:#181b20;
+}
+
+
+nav{
+	float:left;
+	position: absolute;
+	left:20px;
+	width:80%;
+}
+
+nav ul{
+	position:relative;
+	color:#695681;
+	font-weight:600;
+	font-size:20px;
+	letter-spacing:1px;
+	padding:4px 8px;
+
+	opacity: 0.8;
+	cursor: pointer;
+	z-index: 10;
+}
+
+nav a{
+	top:50px;
+	left:0px;
+	width:80px;
+	height:50px;
+	border-radius:50%;
+	color:white;
+	background: linear-gradient(90deg, #7a7a7a 38%, #c3c3c3 100%);
+	font-weight:500;
+	letter-spacing:1px;
+	position: relative;
+}
+
+
+
+
+.main article{
+	margin-left:650px;
+}
+
+
+
+@media (max-width: 1480px){
+	.main article{
+		width:40%;
+	}
+}
+
+@media (max-width: 1200px){
+	.main aside{
+		width:30%;
+		height:30%;
+		top:-100px;
+    	left:-180px;
+    	padding:60px;
+    	padding-left:200px;
+    	padding-top:100px;
+    	font-size:1em;
+	}
+	.title{
+		font-size:5em;
+	}
+	.main article{
+		margin-top:300px;
+		margin-left:10px;
+		float:left;
+		width:80%;
+	}
+	nav a{
+		top:250px;
+		position: relative;
+	}
+}
+
+@media (max-width: 870px){
+	.title{
+		font-size:4em;
+		float:right;
+		text-align:left;
+		margin-top:400px;
+	}
+	.main article{
+		margin-top:30px;
+	}
+}

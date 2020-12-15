@@ -6,7 +6,16 @@ const RecentPage = async() => {
 		params:[sessionStorage.userId]
 	});
 
+	//await checkData(()=>window.google);
+
 	console.log(d)
+
+	//await checkData(()=>window.google);
+
+	//new google.maps.Map($("#recent-page .map")[0], {
+    //	center: { lat: -34.397, lng: 150.644 },
+    //	zoom: 8,
+    //});
 
 	let valid_ghosts = d.result.reduce((r,o)=>{
 		o.icon = o.img;
@@ -15,7 +24,7 @@ const RecentPage = async() => {
 	},[])
 
 
-	let map_el = await makeMap("#recen-page .map");
+	let map_el = await makeMap("#recent-page .map");
 
 	makeMarkers(map_el,valid_ghosts);
 
@@ -41,11 +50,19 @@ const ListPage = async() => {
 		params:[sessionStorage.userId]
 	});
 
+	//console.log(d)
+
+	//$("#list-page .ghostlist")
+	//	.html(d.result.length?makeGhostList(d.result):'Hey,add a ghost.');
+
+	$("#list-page .filter-list").html(makeFilterList(d.result))
+
 	console.log(d)
 
-	$("#list-page .ghostlist")
-		.html(d.result.length?makeGhostList(d.result):'Hey,add a ghost.');
+	drawGhostList(d.result);
 }
+
+
 
 const UserProfilePage = async() => {
 	let d = await query({
@@ -70,6 +87,21 @@ const UserEditPage = async() => {
 	});
 }
 
+
+const UserUploadPage = async => {
+	query({
+		type:'user_by_id',
+		params:[sessionStorage.userId]
+	}).then(d=>{
+		console.log(d)
+
+		makeUploaderImage({
+			namespace:'user-upload',
+			folder:'',
+			name:d.result[0].img
+		})
+	});
+}
 
 
 
@@ -123,7 +155,7 @@ const LocationAddPage = async() => {
 			icon:"image/marker.svg"
 		};
 		let posFromCenter = {
-			lat:map.getCneter().lat(),
+			lat:map.getCenter().lat(),
 			lng:map.getCenter().lng(),
 			icon:"image/marker.svg"
 		};

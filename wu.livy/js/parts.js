@@ -1,5 +1,11 @@
 
 
+
+const drawGhostList = (a,empty_phrase='Hey, add a ghost.')=> {
+	$("#list-page .ghostlist")
+		.html(a.length?makeGhostList(a):empty_phrase);
+}   
+
 const makeGhostList = templater(o=>`
 	<div class="ghostlist-item js-ghost-jump" data-id="${o.id}">
 		<div class="ghostlist-image">
@@ -17,6 +23,9 @@ const makeGhostList = templater(o=>`
 const makeUserProfile = templater(o=>`
 	<div class="profile-image">
 		<img src="${o.img}" alt="">
+		<div class="floater right bottom">
+			<a href="#user-upload-page"><img class="icon" src="image.pencil.png"></a>
+		</div>
 	</div>
 	<div class="profile-body">
 		<div class="profile-name">${o.name}</div>
@@ -69,7 +78,7 @@ const FormControl = ({namespace,name,displayname,type,placeholder,value}) => {
 }
 
 
-const makeGhostProfileUpdateForm = o => `
+const makeGhostEditForm = o => `
 	${FormControl({
 		namespace:"ghost-edit",
 		name:"name",
@@ -126,5 +135,26 @@ const makeUserEditForm = o => `
 		placeholder:"Type Your Email",
 		value:o.email
 	})}
-	</form>
+	
 `;
+
+
+const filterList = (ghost,type) => {
+	let a = [...(new Set(ghosts.map(o=>o[type])))];
+	return templater(o=>`<div class="filter" data-field="${type}" data-value="${o}">${o[0].toUpperCase()+o.substr(1)}</div>`)(a);
+}
+
+const makeFilterList = (ghosts) => {
+	return`
+	<div class="filter" data-field="type" data-value="all">All</div>
+	${filterList(ghosts, 'type')} |
+	${filterList(ghosts, 'color')}
+	`;
+}
+
+
+const makeUploaderImage = ({namespace,folder,name}) => {
+	$(`#${namespace}-image`).val(folder+name);
+	$(`#${namespace}-page .image-uploader`)
+		.css({'background-image':`url('${folder+name}')`})
+}

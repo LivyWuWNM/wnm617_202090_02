@@ -23,9 +23,9 @@ const checkSignupForm = () => {
 
 
 const checkUserEditForm = () => {
-	let username = $("user-edit-username").val();
-	let name = $("user-edit-name").val();
-	let email = $("user-edit-email").val();
+	let username = $("#user-edit-username").val();
+	let name = $("#user-edit-name").val();
+	let email = $("#user-edit-email").val();
 
 	query({
 		type:'update_user',
@@ -121,3 +121,59 @@ const checkLocationAddForm = () => {
 }
 
 
+
+
+const checkSearchForm = async () => {
+	let s = $("#list-search-input").val();
+	console.log(s)
+
+	let r = await query({type:"search_ghosts",params: [s,sessionStorage.userId]});
+
+	drawGhostList(r.result,'No result found');
+
+	console.log(r)
+}
+
+
+const checkListFilter = async (d) => {
+	let r = d.value=='all' ?
+		await query({
+			type:'ghosts_by_user_id',
+			params:[sessionStorage.userId]
+		}) :
+		await query({
+			type:'ghost_filter',
+			params:[d.field,d.value,sessionStorage.userId]
+		});
+
+	console.log(r)
+	drawGhostList(r.result,'No results found');
+}
+
+
+
+const checkUpload = file => {
+	let fd = new FormData();
+	fd.append("image",file);
+
+	return fetch('data/api.php',{
+		method:'POST',
+		body:fd
+	}).then(d=>d.json())
+}
+
+
+const checkUserUpload = () => {
+	let upload = $("#user-upload-image").val()
+	if(upload=="") return;
+
+	query({
+		type:'update_user_image',
+		params:[upload,sessionStorage.userId]
+	}).then(d=>{
+		if(d.error) {
+			throw d.error;
+		}
+		window.history.back();
+	})
+}

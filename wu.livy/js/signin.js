@@ -14,8 +14,9 @@ const checkSigninForm = async () => {
 	let pass = $("#signin-password").val()
 
 	console.log(user,pass)
+	
 	if(user=="" || pass=="") {
-		makeWarning("#warning-modal","Type a Username and Password");
+		makeWarning("#warning-modal","Wrong Username or Password");
 		return;
 	}
 

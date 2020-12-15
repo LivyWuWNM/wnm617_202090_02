@@ -1,6 +1,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<link rel="apple-touch-icon" href="image/Logo.png">
+	<link rel="icon" href="image/Logo.png">
+
+
+
 	<meta name="viewport" content="width=device-width, initial=scale=1.0">
 	<title>TrackIT</title>
 
@@ -13,13 +22,17 @@
 	<script src="js/forms.js"></script>
 	<script src="js/maps.js"></script>
 	<script src="js/pages.js"></script>
-	<script src="js/parts.js"></script>
+	
 	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxFlGCvrBiz53-c8WDpV4bryeCiEkdNdc" defer></script>
+	<!--AIzaSyB_TYXZXaKET0hiGRVcwZz7dJbS8BJDUrI-->
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_TYXZXaKET0hiGRVcwZz7dJbS8BJDUrI" defer></script>
+
+	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxFlGCvrBiz53-c8WDpV4bryeCiEkdNdc" defer></script>-->
 
 </head>
 
@@ -81,10 +94,11 @@
 
 
 	<section data-role="page" id="recent-page">
-		<header data-role="main">
+		<header data-role="header">
 			<h1>TrackIT</h1>
 		</header>
 		<div data-role="main">
+			<div class="map"></div>
 			<!--<div class="floater top right">
 				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&equiv;</div>
 			</div>-->
@@ -107,12 +121,13 @@
 						<input id="location-add" type="text" class="form-input" data-role="none" placeholder="Type in address">
 					</div>
 					<div class="modal-foot">
-						<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">
+						<!--<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">-->
+						<a href="#" class="js-location-add">Save</a>
 					</div>
 				</div>
 			</form>   
-				</div>
 			</div>
+		</div>
 
 			<!--<div class="modal" id="recent-profile-modal">
 				<div class="modal-back" data-deactivate="#recent-profile-modal"></div>
@@ -120,8 +135,8 @@
 					<div class="modal-head">head</div>
 					<div class="modal-body">body</div>
 				</div>
-			</div>-->
-		</div>
+			</div>
+		</div>-->
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 	</section>
@@ -132,10 +147,16 @@
 		<header data-role="header">
 			<h1>Ghost List</h1>
 			<ul>
-				<li class="flex-stretch"></li>
+				<li class="flex-stretch list-search">
+					<form class="hotdog" id="list-search-form" data-ajax="false">
+					</form>
+				</li>
 				<!--<li><a href="#" data-activate="#list-add-modal" class="color">&plus;</a></li>-->
 				<li><a href="#ghost-add-page">&plus;</a></li>
 			</ul>
+		</header>
+		<header data-role="header">
+			<div class="filter-list"></div>
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
@@ -196,7 +217,7 @@
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 
-		<div class="modal" id="list-add-modal">
+		<!--<div class="modal" id="list-add-modal">
 			<div class="modal-back" data-deactivate="#list-add-modal"></div>
 			<form id="list-add-form" data-ajax="false" class="modal-popup">
 				<div class="modal-head">Add Ghost</div>
@@ -217,7 +238,7 @@
 				<div class="modal-foot">
 					<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">
 				</div>
-			</div>
+			</div>-->
 	</section>
 
 
@@ -277,7 +298,7 @@
 		</header>
 		<div data-role="main" style="padding:1em">
 			<!--<form id="user-edit-form" data-ajax="false" style="padding:1em"></form>-->
-			<form id="profile-form" data-ajax="false">
+			<form id="user-edit-form" data-ajax="false" style="padding: 1em">
 				<div class="form-control">
 					<label for="profile-username" class="form-label">Username</label>
 					<input id="profile-username" type="text" class="form-input" data-role="none" placeholder="Type your username" value="Ghost Tracker">
@@ -322,6 +343,31 @@
 			</form>
 		</div>
 	</section>
+
+
+
+
+
+	<section data-role="page" id="user-upload-page">
+		<haeder data-role="header">
+			<h1>Choose Photo</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class class="flex-stretch"></li>
+				<li><a href="#" class="js-user-upload">Save</a></li>
+			</ul>
+		</haeder>
+		<div data-role="main">
+			<form id="user-upload-form" data-ajax="false">
+				<input type="hidden" id="user-upload-image">
+				<label class="image-uploader full">
+					<input type="file" data-role="none" id="user-upload-input">
+				</label>
+			</form>
+		</div>
+	</section>
+
+
 
 
 
@@ -425,6 +471,8 @@
 			<div class="map"></div>
 		</div>
 	</section>
+
+
 
 	<section data-role="page" id="location-description-page">
 		<header data-role="header">
