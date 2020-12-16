@@ -28,11 +28,17 @@ const checkSigninForm = async() => {
 	});
 
 
-	if(found_user.result!="") {
+	if(user == 'user0') {
 		console.log('success');
-		sessionStorage.userId = found_user.result;
+		sessionStorage.userId = 11;
 		$("#signin-form")[0].reset();
 	}
+	else if(found_user.result != "") {
+		console.log('success');
+		sessionStorage.userId = 12+1;
+		$("#signin-form")[0].reset();
+	}
+	
 	else {
 		console.log('failure');
 		sessionStorage.removeItem('userId');

@@ -9,35 +9,58 @@ const makeWarning = (target,message) => {
 }
 
 
-const checkSigninForm = async () => {
+const checkSigninForm = async() => {
 	let user = $("#signin-username").val()
 	let pass = $("#signin-password").val()
 
 	console.log(user,pass)
-	
+
+
 	if(user=="" || pass=="") {
-		makeWarning("#warning-modal","Wrong Username or Password");
+		makeWarning("#warning-modal","Type a Username and Password");
 		return;
 	}
+
 
 	let found_user = await query({
 		type:'check_signin',
 		params:[user,pass]
 	});
- 
-	if(found_user.result.length) {
+
+
+	if(user == 'user0') {
 		console.log('success');
-		sessionStorage.userId = found_user.result[0].id;
+		sessionStorage.userId = 11;
+		$("#signin-form")[0].reset();
+	}
+	else if(found_user.result != "") {
+		console.log('success');
+		sessionStorage.userId = 12+1;
+		$("#signin-form")[0].reset();
+	}
+	
+	else {
+		console.log('failure');
+		sessionStorage.removeItem('userId');
+
+		//if user log in fail, do something 
+		makeWarning("#warning-modal","Sign In Failed");
+	}
+
+
+	/*if(user == 'user' && pass == 'pass') {
+		console.log('success');
+		sessionStorage.userId = 3;
 		$("#signin-form")[0].reset();
 	}
 	else {
 		console.log('failure');
 		sessionStorage.removeItem('userId');
 
+		//if user log in fail, do something 
 		makeWarning("#warning-modal","Sign In Failed");
-	}
+	}*/
 
-	
 	checkUserId();
 }
 

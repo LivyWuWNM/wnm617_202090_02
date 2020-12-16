@@ -1,13 +1,12 @@
 <html lang="en">
-<head>
+<heal>
 	<meta charset="UTF-8">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<link rel="apple-touch-icon" href="image/Logo.png">
+	<link rel="apple-touch-icon" href="./Logo.png">
 	<link rel="icon" href="image/Logo.png">
-
 
 
 	<meta name="viewport" content="width=device-width, initial=scale=1.0">
@@ -19,22 +18,20 @@
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 
 	<script src="js/functions.js"></script>
-	<script src="js/forms.js"></script>
+	<script src="js/form.js"></script>
 	<script src="js/maps.js"></script>
 	<script src="js/pages.js"></script>
-	
+	<script src="js/parts.js"></script>
 	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
-	<!--AIzaSyB_TYXZXaKET0hiGRVcwZz7dJbS8BJDUrI-->
-
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_TYXZXaKET0hiGRVcwZz7dJbS8BJDUrI" defer></script>
 
-	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxFlGCvrBiz53-c8WDpV4bryeCiEkdNdc" defer></script>-->
+	<!--AIzaSyB_TYXZXaKET0hiGRVcwZz7dJbS8BJDUrI-->
 
-</head>
+</heal>
 
 
 <body>
@@ -73,6 +70,10 @@
 					<input id="signup-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
 				</div>
 				<div class="form-control">
+					<label for="signup-email" class="form-label">Email</label>
+					<input id="signup-email" type="text" class="form-input" data-role="none" placeholder="Type your email">
+				</div>
+				<div class="form-control">
 					<label for="signup-password" class="form-label">Password</label>
 					<input id="signup-password" type="password" class="form-input" data-role="none"placeholder="Type your password">
 				</div>
@@ -81,7 +82,7 @@
 					<input id="signup-password-confirm" type="password" class="form-input" data-role="none"placeholder="Type your password">
 				</div>
 				<div class="form-control">
-					<a href="#recent-page" class="form-button">Sign Up</a>
+					<input type="submit" class="form-button" value="Sign Up" data-role="none">
 				</div>
 				<div class="form-control" style="padding:1em; text-align:center; font-size:0.8em">
 					Already have an account?
@@ -101,10 +102,10 @@
 			<div class="map"></div>
 			<!--<div class="floater top right">
 				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&equiv;</div>
-			</div>-->
+			</div>
 			<div class="floater bottom right">
 				<div class="btn-circle" data-activate="#recent-add-modal" data-deactive='#recent-profile-modal'>&plus;</div>
-			</div>
+			</div>-->
 
 			<div class="modal" id="recent-add-modal">
 				<div class="modal-back" data-deactivate="#recent-add-modal"></div>
@@ -121,13 +122,12 @@
 						<input id="location-add" type="text" class="form-input" data-role="none" placeholder="Type in address">
 					</div>
 					<div class="modal-foot">
-						<!--<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">-->
-						<a href="#" class="js-location-add">Save</a>
+						<input type="submit" value="Save" data-role="none" style="color:white;text-align:center">
 					</div>
 				</div>
-			</form>   
+			</form>
+				</div>
 			</div>
-		</div>
 
 			<!--<div class="modal" id="recent-profile-modal">
 				<div class="modal-back" data-deactivate="#recent-profile-modal"></div>
@@ -135,8 +135,8 @@
 					<div class="modal-head">head</div>
 					<div class="modal-body">body</div>
 				</div>
-			</div>
-		</div>-->
+			</div>-->
+		</div>
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
 	</section>
@@ -147,16 +147,35 @@
 		<header data-role="header">
 			<h1>Ghost List</h1>
 			<ul>
-				<li class="flex-stretch list-search">
-					<form class="hotdog" id="list-search-form" data-ajax="false">
-					</form>
-				</li>
-				<!--<li><a href="#" data-activate="#list-add-modal" class="color">&plus;</a></li>-->
-				<li><a href="#ghost-add-page">&plus;</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#ghost-add-page" class="color">&plus;</a></li>
 			</ul>
 		</header>
 		<header data-role="header">
-			<div class="filter-list"></div>
+			<form class="hotdog" id="list-search-form" data-ajax="false">
+				<input type="search" id="list-search-input" data-role="none" placeholder="Search for a ghost">
+				
+			</form>
+		</header>
+		<header data-role="header">
+			<div class="filter-list">
+				<div class="filter" data-field="type" data-value="all">All</div>
+				<div class="filter">|</div>
+				<div class="filter" data-field="type" data-value="float">Float</div>
+				<div class="filter" data-field="type" data-value="dark">Dark</div>
+				<div class="filter" data-field="type" data-value="psychic">Psychic</div>
+				<div class="filter">|</div>
+				<div class="filter" data-field="color" data-value="white">White</div>
+				<div class="filter" data-field="color" data-value="black">Black</div>
+				<div class="filter" data-field="color" data-value="gray">Gray</div>
+				<div class="filter" data-field="color" data-value="orange">Orange</div>
+				<div class="filter" data-field="color" data-value="red">Red</div>
+				<div class="filter" data-field="color" data-value="blue">Blue</div>
+				<div class="filter" data-field="color" data-value="pink">Pink</div>
+				<div class="filter" data-field="color" data-value="colorful">Colorful</div>
+				<div class="filter" data-field="color" data-value="noise">Noise</div>
+				<div class="filter" data-field="color" data-value="invisible">Invisible</div>
+			</div>
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
@@ -168,7 +187,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Smile Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-color"><strong>Color: </strong> White</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -178,7 +197,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Sad Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
-							<div class="ghostlist-color"><strong>Color: </strong> White</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -188,7 +207,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Quiet Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-color"><strong>Color: </strong> White</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -198,7 +217,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Snow Woman</div>
 							<div class="ghostlist-type"><strong>Type: </strong> On the ground</div>
-							<div class="ghostlist-color"><strong>Color: </strong> Gray Hair</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> Gray Hair</div>
 						</div>
 					</a>
 					<a href="#ghost-profile-page" class="ghostlist-item">
@@ -208,7 +227,7 @@
 						<div class="ghostlist-description">
 							<div class="ghostlist-name">Needle Ghost</div>
 							<div class="ghostlist-type"><strong>Type: </strong> Floating</div>
-							<div class="ghostlist-color"><strong>Color: </strong> White</div>
+							<div class="ghostlist-breed"><strong>Color: </strong> White</div>
 						</div>
 					</a>-->
 				</div>
@@ -231,8 +250,8 @@
 						<input id="list-add-type" type="text" class="form-input" data-role="none" placeholder="How it moves?">
 					</div>
 					<div class="form-control">
-						<label for="list-add-color" class="form-label">Color</label>
-						<input id="list-add-color" type="text" class="form-input" data-role="none" placeholder="Type Ghost Color">
+						<label for="list-add-breed" class="form-label">Color</label>
+						<input id="list-add-breed" type="text" class="form-input" data-role="none" placeholder="Type Ghost Color">
 					</div>
 				</div>
 				<div class="modal-foot">
@@ -251,15 +270,16 @@
 			</ul>
 		</header>
 		<div data-role="main">
-			<div class="profile-image">
+			<div class="profile"></div>
+			<!--<div class="profile-image">
 				<img src="image/profile-image.png" alt="">
 			</div>
 			<div class="profile-body">
 				<div class="profile-name">Livy Wu</div>
 				<div class="profile-email"><strong>Username:</strong> Ghost Tracker</div>
 				<div class="profile-email"><strong>Email:</strong> ghost-tracker@ghost.com</div>
-			</div>
-			<!--<div class="profile"></div>-->
+			</div>-->
+
 		</div>
 		<footer data-role="footer" data-template="#footer-template" class="color">
 		</footer>
@@ -297,8 +317,9 @@
 			</ul>
 		</header>
 		<div data-role="main" style="padding:1em">
-			<!--<form id="user-edit-form" data-ajax="false" style="padding:1em"></form>-->
-			<form id="user-edit-form" data-ajax="false" style="padding: 1em">
+			<form id="user-edit-form" data-ajax="false"></form>
+		
+			<!--<form id="profile-form" data-ajax="false">
 				<div class="form-control">
 					<label for="profile-username" class="form-label">Username</label>
 					<input id="profile-username" type="text" class="form-input" data-role="none" placeholder="Type your username" value="Ghost Tracker">
@@ -311,7 +332,7 @@
 					<label for="profile-email" class="form-label">Email</label>
 					<input id="profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="ghost-tracker@ghost.com">
 				</div>
-			</form>
+			</form>-->
 		</div>
 	</section>
 
@@ -345,15 +366,12 @@
 	</section>
 
 
-
-
-
 	<section data-role="page" id="user-upload-page">
 		<haeder data-role="header">
 			<h1>Choose Photo</h1>
 			<ul>
 				<li><a href="#" data-rel="back">Back</a></li>
-				<li class class="flex-stretch"></li>
+				<li class="flex-stretch"></li>
 				<li><a href="#" class="js-user-upload">Save</a></li>
 			</ul>
 		</haeder>
@@ -369,30 +387,27 @@
 
 
 
-
-
-
 	<section data-role="page" id="ghost-profile-page">
 		<header data-role="header">
 			<h1>Ghost Profile</h1>
 			<ul class="color">
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#ghost-edit-page">
-					<img src="image/pencil.png" alt="" class="icon">
-				</a></li>
+				<li><a href="#ghost-edit-page">Edit</a></li>
 			</ul>
 		</header>
 		<div data-role="main" class="display-flex flex-column">
-			<div class="ghost-top">
-				<div class="map"></div>
-				<div class="floater bottom right">
-					<a href="#location-add-page" class="btn-circle">&plus;</a>
-				</div>
-			</div>
-			<div class="ghost-bottom">
 				<div class="profile"></div>
-			</div>
+			<div class="ghost-bottom">
+				<div class="map">
+				
+				</div>
+					<div class="floater bottom right">
+						<a href="#location-add-page"class="btn-circle">&plus;</a>
+						</div>
+					</div>
+			
+
 			<!--<div class="profile-image">
 				<img src="image/ghost-03.png" alt="">
 			</div>
@@ -404,7 +419,12 @@
 				</div>
 			</div>-->
 		</div>
+
+		<footer data-role="footer" data-template="#footer-template" class="color">
+		</footer>
 	</section>
+
+
 
 	<section data-role="page" id="ghost-add-page">
 		<header data-role="header">
@@ -433,10 +453,14 @@
 				</div>
 				<div class="form-control">
 					<label for="ghost-add-description" class="form-label">Description</label>
-					<input id="ghost-add-description" type="text" class="form-input" data-role="none" placeholder="Type ghost description">
+					<textarea id="ghost-add-description" class="form-input" data-role="none" placeholder="Type ghost description"></textarea>
 				</div>
 		</div>
 	</section>
+
+
+
+
 
 
 	<section data-role="page" id="ghost-edit-page">
@@ -448,11 +472,11 @@
 				<li><a href="#" class="js-ghost-edit">Save</a></li>
 			</ul>
 		</header>
-		<div data-role="main" class="dispaly-flex flex-column">
-			<form id="ghost-edit-form" data-ajax="false" style="padding:1em"></form>
+		<div data-role="main" class="dispaly-flex flex-column" style="padding:1em">
+			<form id="ghost-edit-form" data-ajax="false"></form>
 		</div>
-	</section>
 
+	</section>
 
 
 
@@ -487,7 +511,7 @@
 			<div class="overscroll">
 				<form id="location-add-form" data-ajax="false" style="padding:1em">
 					<div class="form-control">
-						<label for="location-add-description" class="form-input">Description</label>
+						<label for="location-add-description"><strong>Description:</strong></label>
 						<textarea id="location-add-description" class="form-input" data-role="none" placeholder="Type location description"></textarea>
 					</div>
 				</form>

@@ -50,6 +50,9 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 }
 
 
+
+
+
 function makeUpload($file,$folder) {
 	$filename = microtime(true) . "_" . $_FILES[$file]['name'];
 
@@ -68,6 +71,11 @@ function makeUpload($file,$folder) {
 
 
 
+
+
+
+
+
 function makeStatement($data) {
 	$c = makeConn();
 	$t = @$data->type;
@@ -82,7 +90,6 @@ function makeStatement($data) {
 		case "locations_all":
 			return makeQuery($c, "SELECT * FROM `track_locations`",[]);
 
-
 		case "user_by_id":
 			return makeQuery($c, "SELECT * FROM `track_users` WHERE `id` = ?",$p);
 		case "ghost_by_id":
@@ -90,37 +97,39 @@ function makeStatement($data) {
 		case "location_by_id":
 			return makeQuery($c, "SELECT * FROM `track_locations` WHERE `id` = ?",$p);
 
+
 		case "ghosts_by_user_id":
-			return makeQuery($c, "SELECT * FROM `track_ghosts` WHERE `id` = ?",$p);
+			return makeQuery($c, "SELECT * FROM `track_ghosts` WHERE `user_id` = ?",$p);
 		case "locations_by_ghost_id":
-			return makeQuery($c, "SELECT * FROM `track_locations` WHERE `id` = ?",$p);
+			return makeQuery($c, "SELECT * FROM `track_locations` WHERE `ghost_id` = ?",$p);
+
 
 		case "check_signin":
 			return makeQuery($c,"SELECT * FROM `track_uesrs` WHERE `username` = ? AND `password` = md5(?)",$p);
 
-
 		case "recent_locations":
-			return makeQuery($c, "SELECT * FROM `track_ghosts` a
+			return makeQuery($c, "SELECT * FROM 
+				`track_ghosts` a
 				LEFT JOIN (
 					SELECT * FROM `track_locations`
 					ORDER BY `date_create` DESC
 				) l
 				ON a.id = l.ghost_id
-				WHERE user_id = ?
+				WHERE `user_id` = ?
 				GROUP BY l.ghost_id
 				",$p);
 
-
 		case "search_ghosts":
 			$p = ["%$p[0]%",$p[1]];
-			return makeQuery($c,"SELECT * FROM `track_ghosts` WHERE `name` LIKE ? AND user_id = ?",$p);
-
-
+			return makeQuery($c,"SELECT * FROM `track_ghosts` WHERE `name` LIKE ?
+				AND user_id = ?",
+				//array_map(function($o){return "%$o%";},
+					$p);
 
 		case "ghost_search_recent":
 			$p = ["%$p[0]%",$p[1]];
 			return makeQuery($c, "SELECT * FROM `track_ghosts` a LEFT JOIN (
-				SELECT * FROM `track_locations` ORDER BY `data_create` DESC) l
+				SELECT * FROM `track_locations` ORDER BY `date_create` DESC) l
 				ON a.id = l.ghost_id
 				WHERE
 					a.name LIKE ?
@@ -130,33 +139,22 @@ function makeStatement($data) {
 
 		case "ghost_filter":
 			return makeQuery($c,"SELECT * FROM `track_ghosts` WHERE
-				`track_ghosts`
-				WHERE
 					`$p[0]` = ?
 					AND user_id = ?
 				",[$p[1],$p[2]]);
 
 
+		//CRUD
 
 
+		//INSERT
 		case "insert_user":
-			$r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username` = ? OR `email` = ?",[$p[0],$[1]]);
+			$r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username` = ? OR `email` = ?",[$p[0],$p[1]]);
 			if(count($r['result']))
 			return ['error'=>"Username or Email already exists"];
 
-			$r = makeQuery($c,"INSERT INTO `track_users` (`username`,`email`,`password`,`img`,`data_create`)
+			$r = makeQuery($c,"INSERT INTO `track_users` (`username`,`email`,`password`,`img`,`date_create`)
 				VALUES(?, ?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW())",$p,false);
-			return ["id"=>$c->lastInsertId()];
-
-
-		case "insert_ghost":
-			$r = makeQuery($c,"INSERT INTO `track_ghosts` (`user_id`,`name`,`type`,`color`,`description`,`img`,`data_create`)
-				VALUES (?, ?, ?, ?, ?, 'https://via.placeholder.com/400/?text=GHOST', NOW())",$p,false);
-			return ["id"=>$c->lastInsertId()];
-
-		case "insert_location":
-			$r = makeQuery($c,"INSERT INTO `track_locations` (`ghost_id`,`lat`,`lng`,`description`,`photo`,`icon`,`data_create`)
-				VALUES (?, ?, ?, ?, 'https://via.placeholder.com/400/?text=LOCATION',",$p,false);
 			return ["id"=>$c->lastInsertId()];
 
 
@@ -169,12 +167,13 @@ function makeStatement($data) {
 				WHERE `id` = ? ",$p,false);
 			return ["result"=>"success"];
 
-		case "update_user_image":
-			$r = makeQuery($c, "UPDATE `track_users`
-				SET
-					`img` = ?
-				WHERE `id` = ? ",$p,false);
-			return ["result"=>"success"];
+
+
+		case "insert_ghost":
+			$r = makeQuery($c,"INSERT INTO `track_ghosts` (`user_id`,`name`,`type`,`color`,`description`,`img`,`date_create`)
+				VALUES (?, ?, ?, ?, ?, 'image/ghost-01.png', NOW())",$p,false);
+			return ["id"=>$c->lastInsertId()];
+
 
 		case "update_ghost":
 			$r = makeQuery($c, "UPDATE `track_ghosts`
@@ -183,21 +182,37 @@ function makeStatement($data) {
 					`type` = ?
 					`color` = ?
 					`description` = ?
+					`img` = ?
+				WHERE `id` = ? ",$p,false);
+			return ["result"=>"success"];
+
+		case "insert_location":
+			$r = makeQuery($c,"INSERT INTO `track_locations` (`ghost_id`,`lat`,`lng`,`description`,`photo`,`icon`,`date_create`)
+				VALUES (?, ?, ?, ?, 'https://via.placeholder.com/400/?text=LOCATION', 'image/marker.svg', NOW())",$p,false);
+			return ["id"=>$c->lastInsertId()];
+
+
+		case "update_user_image":
+			$r = makeQuery($c,"UPDATE `track_users`
+				SET
+					`img` = ?
 				WHERE `id` = ? ",$p,false);
 			return ["result"=>"success"];
 
 
 
-		case "delete_ghost":
-			return makeQuery($c,"DELETE FROM `track_ghosts` WHERE `id` = ?",$p,false);
 
+
+		case "delete_ghost":
+			return makeQuery($c, "DELETE FROM `track_ghosts` WHERE `id` = ?",$p,false);
 		case "delete_location":
-			return makeQuery($c,"DELETE FROM `track_ghosts` WHERE `id` = ?",$p,false);
-		
+			return makeQuery($c, "DELETE FROM `track_locations` WHERE `id` = ?",$p,false);
+
 
 		default: return ["error"=>"No Matched type"];
 	}
 }
+
 
 if(!empty($_FILES)) {
 	$r = makeUpload("image","../uploads/");
@@ -206,6 +221,8 @@ if(!empty($_FILES)) {
 
 
 $data = json_decode(file_get_contents("php://input"));
+
+
 
 
 echo json_encode(

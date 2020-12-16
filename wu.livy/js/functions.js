@@ -1,5 +1,6 @@
 
 
+
 const query = (options) => {
 	return fetch('data/api.php',{
 		method:'POST',
@@ -8,14 +9,13 @@ const query = (options) => {
 	}).then(d=>d.json())
 }
 
-
-
-
+//query({type:'users_all'}).then(d=>console.log(d))
 
 
 const templater = f => a =>
 	(Array.isArray(a)?a:[a])
 	.reduce((r,o,i,a)=>r+f(o,i,a),'');
+
 
 
 const checkData = (exterior_check) => new Promise((resolve,reject)=>{

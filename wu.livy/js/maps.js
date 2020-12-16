@@ -1,21 +1,30 @@
 
 
-const makeMap = async (target, center={lat: 37.786206, lng: -122.399341}) => {
+const makeMap = async(target, center={lat: 37.759094, lng: -122.457383}) => {
+
 	await checkData(()=>window.google);
 
 	let map_el = $(target);
 
 	if(!map_el.data('map'))
 		map_el.data({
-			"map":new google.maps.Map(map_el[0], {
+			"map": new google.maps.Map(map_el[0], {
 				center: center,
 				zoom: 12,
 				disableDefaultUI: true
 			}),
 			"infoWindow":new google.maps.InfoWindow({content:''})
-		});
+	});
+
+
+	/*new google.maps.Map(map_el[0], {
+		center: center,
+		zoom: 11,
+		disableDefaultUI: true
+	});*/
 	return map_el;
 }
+
 
 
 const makeMarkers = (map_el, map_locs) => {
@@ -32,12 +41,21 @@ const makeMarkers = (map_el, map_locs) => {
 			position: o,
 			map: map,
 			icon:{
-				url:o.icon,
+				url:"image/marker.svg",
 				scaledSize: {
 					width:40,
 					height:40
 				}
 			}
+			/*icon:{
+				
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 10,
+				url:o.icon,
+				fillOpacity:0.8,
+				strokeWeight:0.4
+			},*/
+			
 		});
 		markers.push(m);
 	});
@@ -45,7 +63,6 @@ const makeMarkers = (map_el, map_locs) => {
 	map_el.data("markers",markers);
 	setTimeout(()=>setMapBounds(map_el, map_locs),150);
 }
-
 
 
 const setMapBounds = (map_el, map_locs) => {

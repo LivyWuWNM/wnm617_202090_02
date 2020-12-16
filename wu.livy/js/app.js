@@ -1,16 +1,12 @@
 $(()=>{
 
-	console.dir($("#user-edit-form")[0])
-
 	checkUserId();
 
 	$(document)
 
-	
 
 	.on("pagecontainerbeforeshow",function(e,ui){
 		console.log(ui.toPage[0].id)
-
 
 		switch(ui.toPage[0].id) {
 			case 'recent-page': RecentPage(); break;
@@ -18,18 +14,22 @@ $(()=>{
 
 			case 'user-profile-page': UserProfilePage(); break;
 			case 'user-edit-page': UserEditPage(); break;
+			case 'user-upload-page': UserUploadPage(); break;
 
 			case 'ghost-profile-page': GhostProfilePage(); break;
 			case 'ghost-edit-page': GhostEditPage(); break;
 
 			case 'location-add-page': LocationAddPage(); break;
 		}
+
 	})
+
 
 	.on("submit","#signin-form",function(e){
 		e.preventDefault();
 		checkSigninForm();
 	})
+
 	.on("submit","#signup-form",function(e){
 		e.preventDefault();
 		checkSignupForm();
@@ -56,29 +56,28 @@ $(()=>{
 
 
 
-
-
 	.on("click",".js-logout", function(e){
 		sessionStorage.removeItem('userId');
 		checkUserId();
 	})
 
+
 	.on("click",".js-ghost-jump",function(e){
 		sessionStorage.ghostId = $(this).data("id");
 		$.mobile.navigate("#ghost-profile-page");
 	})
-
 	.on("click",".js-location-jump",function(e){
 		sessionStorage.ghostId = $(this).data("id");
 		$.mobile.navigate("#location-profile-page");
 	})
 	.on("click",".js-ghost-delete",function(e){
+		//query({type:'delete-ghost',params:[$(this).data("id")]})
+		//.mobile.navigate("ghost-profile-page");
 		checkGhostDelete($(this).data("id"));
 	})
 	.on("click","js-user-upload",function(e){
 		checkUserUpload();
 	})
-
 
 
 	.on("click",".filter",function(e){
@@ -88,11 +87,15 @@ $(()=>{
 		checkUpload(this.files[0])
 		.then(d=>{
 			console.log(d)
-			makeUploaderImage({
-				namespace:'user-upload',
-				folder:'uploads/',
-				name:d.result
-			})
+			$("#user-upload-image").val('uploads/'+d.result);
+			$("#user-upload-page .image-uploader")
+				.css({'background-image':`url('uploads/${d.result}')`})
+			//makeUploaderImage(this,d.result,'uploads/')
+			//makeUploaderImage({
+			//	namespace:'user-upload',
+			//	folder:'uploads/',
+			//	name:d.result
+			//})
 		})
 	})
 

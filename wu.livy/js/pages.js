@@ -1,21 +1,11 @@
-
 const RecentPage = async() => {
-	
+
 	let d = await query({
 		type:'recent_locations',
 		params:[sessionStorage.userId]
 	});
 
-	//await checkData(()=>window.google);
-
 	console.log(d)
-
-	//await checkData(()=>window.google);
-
-	//new google.maps.Map($("#recent-page .map")[0], {
-    //	center: { lat: -34.397, lng: 150.644 },
-    //	zoom: 8,
-    //});
 
 	let valid_ghosts = d.result.reduce((r,o)=>{
 		o.icon = o.img;
@@ -23,25 +13,33 @@ const RecentPage = async() => {
 		return r;
 	},[])
 
-
 	let map_el = await makeMap("#recent-page .map");
 
+	//console.log(map_el.data('map'))
+
 	makeMarkers(map_el,valid_ghosts);
+	//makeMarkers(map_el,[]);
+
 
 	map_el.data("markers").forEach((o,i)=>{
 		o.addListener("click",function(){
+			//console.log("honk")
+			
+			//sessionStorage.ghostId = valid_ghosts[i].ghost_id;
+			//$.mobile.navigate("#ghost-profile-page");
+			
+			map_el.data("infoWindow")
+				.open(map_el.data("map"),o);
+			map_el.data("infoWindow")
+				.setContent(makeGhostPopup(valid_ghosts[i]));
 
-			/*
-			sessionStorage.ghostId = valid_ghosts[i].ghost_id;
-			$.mobile.navigate("#ghost-profile-page");
-			*/
-
-			$("#recent-ghost-modal").addClass("active");
-			$("#recent-ghost-modal .modal-body")
-				.html(makeGhostPopup(valid_ghosts[i]))
+			//$("#recent-ghost-modal").addClass("active");
+			//$("#recent-ghost-modal .modal-body")
+				//.html(makeGhostPopup(valid_ghosts[i]))
 		})
 	})
 }
+
 
 
 const ListPage = async() => {
@@ -50,16 +48,14 @@ const ListPage = async() => {
 		params:[sessionStorage.userId]
 	});
 
-	//console.log(d)
-
-	//$("#list-page .ghostlist")
-	//	.html(d.result.length?makeGhostList(d.result):'Hey,add a ghost.');
-
-	$("#list-page .filter-list").html(makeFilterList(d.result))
+	//$("#list-page .filter-list").html(makeFilterList(d.result))
 
 	console.log(d)
 
+
 	drawGhostList(d.result);
+	//$("#list-page .ghostlist")
+	//	.html(d.result.length?makeGhostList(d.result):'Please add a ghost to your list!');
 }
 
 
@@ -75,6 +71,9 @@ const UserProfilePage = async() => {
 	$("#user-profile-page .profile")
 		.html(makeUserProfile(d.result));
 }
+
+
+
 const UserEditPage = async() => {
 	query({
 		type:'user_by_id',
@@ -82,7 +81,7 @@ const UserEditPage = async() => {
 	}).then(d=>{
 		console.log(d)
 
-		$("#user-edit-form")
+		$("#user-edit-page [data-role='main']")
 			.html(makeUserEditForm(d.result[0]));
 	});
 }
@@ -102,6 +101,7 @@ const UserUploadPage = async => {
 		})
 	});
 }
+
 
 
 
@@ -125,18 +125,23 @@ const GhostProfilePage = async() => {
 			makeMarkers(map_el,d.result);
 		})
 	})
+
+	
 }
+
+
 const GhostEditPage = async() => {
 	query({
 		type:'ghost_by_id',
-		params:[sessionStorage.animalId]
+		params:[sessionStorage.ghostId]
 	}).then(d=>{
 		console.log(d)
 
-		$("#ghost-edit-form")
+		$("#ghost-edit-page [data-role='main']")
 			.html(makeGhostEditForm(d.result[0]));
 	});
 }
+
 
 
 
